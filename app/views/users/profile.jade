@@ -1,4 +1,18 @@
 extends ../shared/template
 
 block content
- h1 Set up your profile!
+  .profile
+    .profileUserName
+      if(user.facebook)
+        h3= user.facebook.name
+      if(user.twitter)
+        h3= user.twitter.displayName
+      if(user.local)
+        h3= user.local.email
+    .profileButtons
+    .profileLeftSide
+      #options
+    .profileRightSide
+      #tasks
+block scripts
+  script(src='/js/es6/compiled/profile.js')

@@ -1,15 +1,15 @@
 module.exports = {
 
 	'facebookAuth' : {
-		'clientID' 		: '1505454133007011',
-		'clientSecret' : '656a3573145bbe7471aa30ff42c5bd8b',
-		'callbackURL'	: 'http://localhost:5000/auth/facebook/callback'
+		'clientID' 		: '232600900282865',
+		'clientSecret' : 'dabf1f1b91296ab786a7a68927ba7290',
+		'callbackURL'	: 'http://localhost:3003/auth/facebook/callback'
 	},
 
 	'twitterAuth' : {
-		'consumerKey'		: 'nzb38sVBojiySUhxAbxZhfRGN',
-		'consumerSecret' : '4wrlIzXq4GKgCe11Wgjib9he2o6MBJIsHx28TkfZxiTwJ1U2zN',
-		'callbackURL'		: 'http://localhost:5000/auth/twitter/callback'
+		'consumerKey'		: 'QebF2sGTfU0H16Wo92FJNhhLn',
+		'consumerSecret' : 'QACJVJ9IWU0fKg05P37bOaY7r38G5D48HbvYbM8YsoPT6ST4Pd',
+		'callbackURL'		: 'http://localhost:3003/auth/twitter/callback'
 	}
 
 };

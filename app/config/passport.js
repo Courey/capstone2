@@ -57,11 +57,8 @@ module.exports = function(passport) {
                     return done(null, newUser);
                 });
             }
-
         });
-
         });
-
     }));
 
     // LOCAL LOGIN
@@ -76,22 +73,17 @@ module.exports = function(passport) {
         userCollection.findOne({ 'local.email' :  email }, function(err, user) {
 
             user = _.create(User.prototype, user);
-
             if (err){
               return done(err);
             }
-
             if (!user){
               return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
             }
-
             if (!user.validPassword(password)){
               return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
             }
-
             return done(null, user);
         });
-
     }));
 
     // FACEBOOK
@@ -132,9 +124,7 @@ module.exports = function(passport) {
 	                        return done(null, newUser);
 	                    });
 	                }
-
 	            });
-
 	        } else {
 	            var user            = req.user;
 
@@ -143,7 +133,7 @@ module.exports = function(passport) {
 	            user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
 	            user.facebook.email = profile.emails[0].value;
               user.facebook.photos = profile.photos;
-
+              user = _.create(User.prototype, user);
 	            user.save(function(err) {
 	                if (err){
                     throw err;
@@ -151,9 +141,7 @@ module.exports = function(passport) {
 	                return done(null, user);
 	            });
 	        }
-
         });
-
     }));
 
     // TWITTER
@@ -191,9 +179,7 @@ module.exports = function(passport) {
       	                });
       	            }
       	        });
-
       	});
-
     }));
 
 

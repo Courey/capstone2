@@ -3,6 +3,13 @@
   $(document).ready(init);
 
   function init(){
-    alert('hi');
+    getUserId();
   }
+
+  function getUserId(){
+    var userId = $('.profile').attr('data-userId');
+    console.log(userId);
+  }
+
+  
 })();

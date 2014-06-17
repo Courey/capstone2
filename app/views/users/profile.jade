@@ -1,7 +1,7 @@
 extends ../shared/template
 
 block content
-  .profile
+  .profile(data-userId= user._id)
     .profileUserName
       if(user.facebook)
         h3= user.facebook.name

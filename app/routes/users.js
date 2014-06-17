@@ -16,11 +16,6 @@ exports.signup = (req, res)=>{
   res.render('users/register', {message: req.flash('signupMessage'), title: 'Register'});
 };
 
-exports.dashboard = (req, res)=>{
-  //User.findById()
-  res.render('users/dashboard', {title: 'Dashboard'});
-};
-
 exports.logout = (req, res)=>{
   req.logout();
   res.redirect('/');

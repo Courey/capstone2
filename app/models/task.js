@@ -1,6 +1,8 @@
-var tasks = global.nss.db.collection('tasks');
+var tasksCollection = global.nss.db.collection('tasks');
 var Mongo = require('mongodb');
-var _ = require('lodash');
+//var _ = require('lodash');
+var traceur = require('traceur');
+var Base = traceur.require(__dirname + '/base.js');
 
 class Task{
     static create(id, obj, func){
@@ -20,39 +22,47 @@ class Task{
       }else{
         task.userId = id;
       }
-      tasks.save(task, ()=>{
+      tasksCollection.save(task, ()=>{
         func(task);
       });
     }// end static create
 
-    static findByTaskId(id, func){
-      if(typeof id === 'string'){
-      if(id.length !== 24){func(null); return;}
-          id = Mongo.ObjectID(id);
-        }
-      tasks.findOne({_id: id}, (error, result)=>{
-        result = _.create(Task.prototype, result);
-        func(result);
-      });
+    static findById(id, fn){
+      Base.findById(id, tasksCollection, Task, fn);
     }// end findById
 
-    static findByUserId(id, func){
-      tasks.find({userId: id}).toArray((err, taskArray)=>{
-        func(taskArray);
-      });
-    }// end static findByUserId
+    static findAllByUserId(userId, fn){
+      Base.findAllByUserId(userId, tasksCollection, Task, fn);
+    }//
+
+    // static findByTaskId(id, func){
+    //   if(typeof id === 'string'){
+    //   if(id.length !== 24){func(null); return;}
+    //       id = Mongo.ObjectID(id);
+    //     }
+    //   tasks.findOne({_id: id}, (error, result)=>{
+    //     result = _.create(Task.prototype, result);
+    //     func(result);
+    //   });
+    // }// end findById
+    //
+    // static findByUserId(id, func){
+    //   tasks.find({userId: id}).toArray((err, taskArray)=>{
+    //     func(taskArray);
+    //   });
+    // }// end static findByUserId
 
     complete(){
       this.isComplete = true;
     }
 
     destroy(fn){
-      tasks.findAndRemove({_id: this._id});
+      tasksCollection.findAndRemove({_id: this._id});
       fn();
     }// end destroy
 
     save(func){
-      tasks.save(this, (err, count)=>{
+      tasksCollection.save(this, (err, count)=>{
         func();
       });
     }// end save

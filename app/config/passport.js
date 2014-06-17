@@ -23,7 +23,7 @@ module.exports = function(passport) {
         });
     });
 
-    // LOCAL SIGNUP
+    // *********** LOCAL SIGNUP ***************
 
     passport.use('local-signup', new LocalStrategy({
         usernameField : 'email',
@@ -61,7 +61,7 @@ module.exports = function(passport) {
         });
     }));
 
-    // LOCAL LOGIN
+    // *************** LOCAL LOGIN *****************
 
     passport.use('local-login', new LocalStrategy({
         usernameField : 'email',
@@ -86,7 +86,7 @@ module.exports = function(passport) {
         });
     }));
 
-    // FACEBOOK
+    // ******************* FACEBOOK ******************
     passport.use(new FacebookStrategy({
 
         clientID        : configAuth.facebookAuth.clientID,
@@ -144,7 +144,7 @@ module.exports = function(passport) {
         });
     }));
 
-    // TWITTER
+    // ********************* TWITTER **********************
     passport.use(new TwitterStrategy({
 
         consumerKey     : configAuth.twitterAuth.consumerKey,

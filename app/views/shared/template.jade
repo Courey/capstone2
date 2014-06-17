@@ -2,20 +2,67 @@ doctype html
 html
   head
     meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
     title= title
-    link(rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Raleway:600', rel='stylesheet', type='text/css')
+
+    //- link(href='/css/normalize.css', rel='stylesheet')
+    //- link(href='/css/buttons.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
+
   body
+
+  .container#navi
+    .row
+        .col-md-12
+          nav.navbar.navbar-default(role='navigation')
+
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(href='/') Desk Beacon
+
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(class='glyphicon glyphicon-home', href='/') Home
+                if(user)
+                  li
+                    a(class='glyphicon glyphicon-user', href='/users/dashboard') Dashboard
+                  li
+                    a(class='glyphicon glyphicon-list', href='#') Tasks
+                  li
+                    a(class='glyphicon glyphicon-bullhorn', href='#') Alerts
+                //- li
+                //-   a(class='glyphicon glyphicon-th-list', href='/courses/index') Courses
+
+              ul.nav.navbar-nav.navbar-right
+                if(user)
+                  li
+                    a#logout.glyphicon.glyphicon-log-out(href='/logout') Logout
+
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
     script(src='/js/vendor/lodash-2.4.1.js')
     script(src='/js/vendor/moment-2.6.0.js')
+    //- script(src='/js/vendor/buttons.js')
     script(src='/js/vendor/traceur.js')
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
     script(src='/socket.io/socket.io.js')
     script(src='/js/es5/main.js')
     script(src='/js/es6/compiled/main.js')
     script(src='/js/es6/compiled/sockets.js')
+
+
 
     block scripts

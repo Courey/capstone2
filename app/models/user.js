@@ -5,7 +5,6 @@
 var userCollection = global.nss.db.collection('users');
 var Mongo = require('mongodb');
 var traceur = require('traceur');
-// var Base = traceur.require(__dirname + '/base.js');
 var bcrypt = require('bcrypt');
 
 class User {
@@ -36,12 +35,10 @@ class User {
     userCollection.save(this, ()=>fn());
   }
 
-  // generating a hash
   generateHash(password) {
     return bcrypt.hashSync(password, 8);
   }
 
-  // checking if password is valid
   validPassword(password) {
     return bcrypt.compareSync(password, this.local.password);
   }
@@ -57,16 +54,3 @@ class User {
 }
 
 module.exports = User;
-
-//TRYING TO CREATE USER WITH PASSPORT
-
-// static createLocal(req, email, password, fn){
-//   var user = new User();
-//   user.local.email = email;
-//   user.local.password = bcrypt.hashSync(password, 8);
-//   userCollection.save(user, ()=>fn(user));
-// }
-//
-// validPassword(password){
-//   return bcrypt.compareSync(password, this.local.password);
-// }

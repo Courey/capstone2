@@ -1,0 +1,10 @@
+extends ../shared/template
+
+block content
+  .input-group
+    form#addNewTask(action='/tasks/new', method='post')
+      input(type='text', name='title', placeholder='title', autofocus=true)
+      textarea.well(type='text', name='body', placeholder='Task details')
+      input(type='datetime-local', name='due', placeholder='due date')
+      input(type='color', name= 'color')
+      button.button#submit Add Task

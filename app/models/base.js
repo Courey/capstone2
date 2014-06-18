@@ -2,6 +2,7 @@ var Mongo = require('mongodb');
 var _ = require('lodash');
 
 class Base{
+  
   static findById(id, collection, model, fn){
     if(typeof id === 'string'){
       if(id.length !== 24){fn(null); return;}

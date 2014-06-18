@@ -11,8 +11,40 @@ block content
         h3= user.local.email
     .profileButtons
     .profileLeftSide
+      p
+        a.button(href='/tasks/index') Tasks:
+      p
+        a.button(href='/tasks/new') Add Task
+      p
+      table.table.table-bordered#approachingTasks
+        thead
+          th Task
+          th Due
+        tbody
+          each task in tasks
+            tr(style='background-color: #{task.color}')
+              td
+                a(href= '/tasks/show/#{task._id.toString()}')= task.title
+              td= task.due
+
       #options
     .profileRightSide
+      p
+        a.button(href='/alerts/index') Alerts:
+      p
+        a.button(href='/alerts/new') Add Alert
+      p
+      table.table.table-bordered#alerts
+        thead
+          th Alert
+          th Time
+        tbody
+          each alert in alerts
+            tr
+              td
+                a(href= '/alerts/show/#{alert._id.toString()}')= alert.task
+              td= alert.dateTime
       #tasks
 block scripts
   script(src='/js/es6/compiled/profile.js')
+  script(src='/js/es6/compiled/timerAlerts.js')

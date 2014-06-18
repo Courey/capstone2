@@ -7,11 +7,16 @@ var Base = traceur.require(__dirname + '/base.js');
 class Task{
     static create(id, obj, func){
       var task = new Task();
+
+      var date = new Date(obj.due);
+      var newHour = date.getHours()+ 5;
+      date.setHours(newHour);
+
       task.title = obj.title;
       task.body = obj.body;
       task.photos = [];
       task.list = [];
-      task.due = new Date(obj.due);
+      task.due = date;
       task.color = obj.color;
       task.isComplete = false;
       task.hasAlert = false;
@@ -54,6 +59,12 @@ class Task{
 
     complete(){
       this.isComplete = true;
+      tasksCollection.save(this, ()=>{});
+    }
+
+    setAlert(){
+      this.hasAlert = true;
+      tasksCollection.save(this, ()=>{});
     }
 
     destroy(fn){

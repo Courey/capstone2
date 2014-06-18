@@ -1,0 +1,8 @@
+extends ../shared/template
+
+block content
+  .input-group
+    form#addNewAlert(action='/alerts/new', method='post')
+      input(type='text', name='task', placeholder='task', autofocus=true)
+      input(type='datetime-local', name='dateTime', placeholder='due date')
+      button.button#submit Add Alert

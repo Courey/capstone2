@@ -1,13 +1,11 @@
 var tasksCollection = global.nss.db.collection('tasks');
 var Mongo = require('mongodb');
-//var _ = require('lodash');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 
 class Task{
     static create(id, obj, func){
       var task = new Task();
-
       var date = new Date(obj.due);
       var newHour = date.getHours()+ 5;
       date.setHours(newHour);
@@ -38,24 +36,7 @@ class Task{
 
     static findAllByUserId(userId, fn){
       Base.findAllByUserId(userId, tasksCollection, Task, fn);
-    }//
-
-    // static findByTaskId(id, func){
-    //   if(typeof id === 'string'){
-    //   if(id.length !== 24){func(null); return;}
-    //       id = Mongo.ObjectID(id);
-    //     }
-    //   tasks.findOne({_id: id}, (error, result)=>{
-    //     result = _.create(Task.prototype, result);
-    //     func(result);
-    //   });
-    // }// end findById
-    //
-    // static findByUserId(id, func){
-    //   tasks.find({userId: id}).toArray((err, taskArray)=>{
-    //     func(taskArray);
-    //   });
-    // }// end static findByUserId
+    }
 
     complete(){
       this.isComplete = true;

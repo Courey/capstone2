@@ -4,14 +4,23 @@
 
   function init(){
     getAlerts();
+    $('#mood').on('change', changeMood);
   }
 
   function getAlerts(){
-    alert('hi');
+    //alert('hi');
     ajax('/alerts/load', 'put', null, alerts=>{
       console.log(alerts);
     }, 'json');
   }
+  function changeMood(){
+    var mood = $('#mood').val();
+
+    ajax(`/alerts/changeStatus/${mood}`, 'put', null, ()=>{});
+
+    console.log(mood);
+  }
+
 
 
 })();

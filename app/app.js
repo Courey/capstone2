@@ -55,4 +55,7 @@ var sockets = traceur.require(__dirname + '/lib/sockets.js');
 var io = require('socket.io')(server);
 io.of('/app').on('connection', sockets.connection);
 
+/* ARDUINO STUFF ***** shit's getting real ******** */
+require('./arduino/arduino');
+
 module.exports = app;

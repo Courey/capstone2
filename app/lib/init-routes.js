@@ -39,6 +39,10 @@ function load(app, fn){
   app.post('/alerts/new', dbg, alerts.create);
   app.get('/alerts/show/:id', dbg, alerts.show);
   app.put('/alerts/load', dbg, alerts.load);
+  app.put('/alerts/changeStatus/:mood', dbg, alerts.changeMood);
+
+  app.get('/alerts/test', dbg, alerts.proximityAlerts);
+  app.post('/alerts/proximity', dbg, alerts.enableProximity);
 
   app.post('/signup', passport.authenticate('local-signup', {
 		successRedirect : '/profile',

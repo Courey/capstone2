@@ -10,6 +10,11 @@ block content
       if(user.local)
         h3= user.local.email
     .profileButtons
+      select#mood
+        option select a status
+        option good
+        option busy
+        option bad
     .profileLeftSide
       p
         a.button(href='/tasks/index') Tasks:

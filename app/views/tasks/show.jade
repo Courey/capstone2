@@ -6,3 +6,5 @@ block content
   p= task.body
   h2= task.due
   h3= user._id.toString()
+  .task(data-id= task._id.toString())
+    span= task._id.toString()

@@ -10,46 +10,29 @@ block content
       if(user.local)
         h3= user.local.email
     .profileButtons
-      select#mood
-        option select a status
-        option good
-        option busy
-        option bad
-    .profileLeftSide
-      p
-        a.button(href='/tasks/index') Tasks:
-      p
-        a.button(href='/tasks/new') Add Task
-      p
-      table.table.table-bordered#approachingTasks
-        thead
-          th Task
-          th Due
-        tbody
-          each task in tasks
-            tr(style='background-color: #{task.color}')
-              td
-                a(href= '/tasks/show/#{task._id.toString()}')= task.title
-              td= task.due
+      button#enableProximity Enable Proximity Alerts
+    .moodLight
+      h3 Set your mood:
+      .green
+        img(src='/img/green_light.png')
+      .yellow
+        img(src='/img/yellow_light.png')
+      .red
+        img(src='/img/red_light.png')
+      .text
 
-      #options
-    .profileRightSide
-      p
-        a.button(href='/alerts/index') Alerts:
-      p
-        a.button(href='/alerts/new') Add Alert
-      p
-      table.table.table-bordered#alerts
-        thead
-          th Alert
-          th Time
-        tbody
-          each alert in alerts
-            tr
-              td
-                a(href= '/alerts/show/#{alert._id.toString()}')= alert.task
-              td= alert.dateTime
-      #tasks
+        p Everything is all good.
+        p I'm busy, you better have a good reason to inturrupt.
+        p The situation is dire. Unfit for human interaction.
+      .moodSelect
+        span Select your current mood:
+        select#mood
+          option select a status
+          option good
+          option busy
+          option bad
+
+
 block scripts
   script(src='/js/es6/compiled/profile.js')
   script(src='/js/es6/compiled/timerAlerts.js')

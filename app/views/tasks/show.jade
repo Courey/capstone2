@@ -1,10 +1,63 @@
 extends ../shared/template
 
 block content
-  h1 Testing
-  h2= task.title
-  p= task.body
-  h2= task.due
-  h3= user._id.toString()
-  .task(data-id= task._id.toString())
-    span= task._id.toString()
+  h1.taskTitleShow= task.title
+  div.container.showContainer
+    div.row
+      div.col-lg-5.col-md-5.col-sm-8.col-xs-9.bhoechie-tab-container
+        div.col-lg-3.col-md-3.col-sm-3.col-xs-3.bhoechie-tab-menu
+          div.list-group
+            a.list-group-item.active.text-center(href='#')
+              h4.glyphicon.glyphicon-align-justify
+              br
+              | Description
+            a.list-group-item.text-center(href='#')
+              h4.glyphicon.glyphicon-calendar
+              br
+              | Due
+            a.list-group-item.text-center(href='#')
+              h4.glyphicon.glyphicon-ok
+              br
+              | Complete
+            a.list-group-item.text-center(href='#')
+              h4.glyphicon.glyphicon-bell
+              br
+              | Alerts
+            a.list-group-item.text-center(href='#')
+              h4.glyphicon.glyphicon-remove
+              br
+              | Delete
+        div.col-lg-9.col-md-9.col-sm-9.col-xs-9.bhoechie-tab
+          div.bhoechie-tab-content.active
+            center
+              h1.glyphicon.glyphicon-align-justify.brownGlyphicon(style='font-size:10em;color:#55518a')
+              p= task.body
+          div.bhoechie-tab-content
+            center
+              h1.glyphicon.glyphicon-calendar.brownGlyphicon(style='font-size:10em;color:#55518a')
+              h3= task.due
+          div.bhoechie-tab-content
+            center
+              h1.glyphicon.glyphicon-ok.brownGlyphicon(style='font-size:12em;color:#55518a')
+              if(task.isComplete)
+                p Task has been completed
+              if(!task.isComplete)
+                form(action= '/tasks/complete', method = 'post')
+                  input(type= 'hidden', name= 'taskId', value= task._id.toString())
+                  button Complete Task
+          div.bhoechie-tab-content
+            center
+              h1.glyphicon.glyphicon-bell.brownGlyphicon(style='font-size:12em;color:#55518a')
+              if(task.hasAlerts)
+              if(!task.hasAlerts)
+                form(action = '/alerts/setAlert', method = 'post')
+                  input(type= 'hidden', name= 'taskId', value= task._id.toString())
+                  button Set Alert
+          div.bhoechie-tab-content
+            center
+              h1.glyphicon.glyphicon-remove.brownGlyphicon(style='font-size:12em;color:#55518a')
+              form(action = '/tasks/delete', method = 'post')
+                input(type= 'hidden', name= 'taskId', value= task._id.toString())
+                button Delete Task
+block scripts
+  script(src='/js/es6/compiled/task.js')

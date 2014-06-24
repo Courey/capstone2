@@ -97,8 +97,9 @@ class Alert{
   }
 
   destroy(fn){
-    alertsCollection.findAndRemove({_id: this._id});
-    fn();
+    alertsCollection.findAndRemove({_id: this._id}, (err, alert)=>{
+      fn();
+    });  
   }// end destroy
 
   save(func){

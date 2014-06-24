@@ -5,7 +5,7 @@ var Task = traceur.require(__dirname + '/../models/task.js');
 
 
 exports.index = (req, res)=>{
-  Task.findAllByUserId(req.params.id, tasks=>{
+  Task.findAllByUserId(req.user._id, tasks=>{
     res.render('tasks/index', {tasks: tasks, user: req.user, title: 'Tasks'});
   });
 };
@@ -23,5 +23,20 @@ exports.create = (req, res)=>{
 exports.show = (req, res)=>{
   Task.findById(req.params.id, task=>{
     res.render('tasks/show', {task: task, user: req.user});
+  });
+};
+
+exports.complete = (req, res)=>{
+  Task.findById(req.body.taskId, task=>{
+    task.complete();
+    res.redirect('/tasks/index');
+  });
+};
+
+exports.destroy = (req, res)=>{
+  Task.findById(req.body.taskId, task=>{
+    task.destroy(()=>{
+      res.redirect('/tasks/index');
+    });
   });
 };

@@ -33,16 +33,19 @@ function load(app, fn){
   app.get('/tasks/new', dbg, tasks.newTaskForm);
   app.post('/tasks/new', dbg, tasks.create);
   app.get('/tasks/show/:id', dbg, tasks.show);
+  app.post('/tasks/complete', dbg, tasks.complete);
+  app.post('/tasks/delete', dbg, tasks.destroy);
 
+  app.post('/alerts/setAlert', dbg, alerts.setAlert);
   app.get('/alerts/index', dbg, alerts.index);
   app.get('/alerts/new', dbg, alerts.newAlertForm);
   app.post('/alerts/new', dbg, alerts.create);
   app.get('/alerts/show/:id', dbg, alerts.show);
   app.put('/alerts/load', dbg, alerts.load);
   app.put('/alerts/changeStatus/:mood', dbg, alerts.changeMood);
-
-  app.get('/alerts/test', dbg, alerts.proximityAlerts);
+  app.put('/alerts/enable/proximity', dbg, alerts.proximityAlerts);
   app.post('/alerts/proximity', dbg, alerts.enableProximity);
+  app.post('/alerts/delete', dbg, alerts.destroy);
 
   app.post('/signup', passport.authenticate('local-signup', {
 		successRedirect : '/profile',

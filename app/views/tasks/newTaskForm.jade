@@ -1,10 +1,22 @@
 extends ../shared/template
 
 block content
-  .input-group
-    form#addNewTask(action='/tasks/new', method='post')
-      input(type='text', name='title', placeholder='title', autofocus=true)
-      textarea.well(type='text', name='body', placeholder='Task details')
-      input(type='datetime-local', name='due', placeholder='due date')
-      input(type='color', name= 'color')
-      button.button#submit Add Task
+  .container.newTaskContainer
+    form.well.span8(action='/tasks/new', method='post')
+      .row
+
+        .taskTitle
+          label Task Title:
+          input.span3(type='text', name='title', placeholder='title', autofocus=true)
+        .taskDate
+          label Task Due:
+          input.span3(type='datetime-local', name='due', placeholder='due date')
+        .taskColor
+          label Color:
+          input.span3(type='color', name= 'color')
+        .taskBody
+          label Task Info:
+          .textArea.well
+            textarea#message.input-xlarge.span5(type='text', name='body', placeholder='Task details')
+
+        button.addTaskButton.btn.btn-primary(type='submit') Add Task

@@ -7,10 +7,30 @@ var Alert = traceur.require(__dirname + '/../models/alert.js');
 var _ = require('lodash');
 var setProximityAlerts = require('../arduino/arduino').setProximityAlerts;
 var setMood = require('../arduino/arduino').setMood;
+var Task = traceur.require(__dirname + '/../models/task.js');
 
+exports.destroy = (req, res)=>{
+  Alert.findById(req.body.alertId, alert=>{
+    alert.destroy(()=>{
+      res.redirect('/alerts/index');
+    });
+  });
+};
+
+exports.setAlert = (req, res)=>{
+  Task.findById(req.body.taskId, task=>{
+    task.hasAlert = true;
+    task.save(()=>{
+      var alertObj = {dateTime : task.due, task: task.title};
+      Alert.create(req.user._id, alertObj, alert=>{
+        res.redirect(`/alerts/show/${alert._id.toString()}`);
+      });
+    });
+  });
+};
 
 exports.index = (req, res)=>{
-  Alert.findAllByUserId(req.params.id, alerts=>{
+  Alert.findAllByUserId(req.user._id, alerts=>{
     res.render('alerts/index', {alerts: alerts, user: req.user, title: 'Tasks'});
   });
 };
@@ -38,6 +58,7 @@ exports.load = (req, res)=>{
 exports.enableProximity = (req, res)=>{
   Alert.findById(req.body.alertId, alert=>{
     alert.enableProximity();
+    res.redirect(`/alerts/show/${alert._id.toString()}`);
   });
 };
 

@@ -1,4 +1,63 @@
 extends ../shared/template
 
 block content
-  h1 Alert INDEX
+  //- a.addTask(href='/alerts/new') Add Alert
+  li.dropdown.addTask
+    a.dropdown-toggle(href='http://www.jquery2dotnet.com', data-toggle='dropdown')
+      |New Alert
+      b.caret
+    ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
+      li
+        .row
+          .col-md-12
+            form#login-nav.form(role='form', action='/alerts/new', method='post', accept-charset='UTF-8')
+              .form-group
+                label.sr-only(for='exampleInputEmail2') Alert Title
+                input#exampleInputEmail2.form-control(type='text', name='task', placeholder='task', autofocus=true)
+              .form-group
+                label.sr-only(for='exampleInputPassword2') Alert Time
+                input#exampleInputPassword2.form-control(type='datetime-local', name='dateTime', placeholder='due date')
+              .form-group
+                button.btn.btn-success.btn-block(type='submit') Add Alert
+  div.span7
+  div.widget.stacked.widget-table.action-table
+    div.widget-header
+      i.icon-th-list
+      h3 Alerts
+
+    div.widget-content
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            th Title
+            th Alert Time
+            th Proximity Alert
+            th Delete Alert
+        tbody
+
+          each alert in alerts
+            tr
+              td
+                a(href= '/alerts/show/#{alert._id.toString()}')= alert.task
+              td= alert.dateTime
+              td.td-actions
+                if(alert.proximity)
+                  span.glyphicon.glyphicon-bell
+                if(!alert.proximity)
+                  form(action = '/alerts/proximity', method = 'post')
+                    input(type= 'hidden', name= 'alertId', value= alert._id.toString())
+                    button Set Proximity Alert
+              td
+                form(action = '/alerts/delete', method = 'post')
+                  input(type= 'hidden', name= 'alertId', value= alert._id.toString())
+                  button.glyphicon.glyphicon-remove
+            //- tr
+            //-   td Trident
+            //-   td
+            //-     | Internet
+            //-     | Explorer 5.0
+            //-   td.td-actions
+            //-     a.btn.btn-small.btn-primary(href='javascript:;')
+            //-       i.btn-icon-only.icon-ok
+            //-     a.btn.btn-small(href='javascript:;')
+            //-       i.btn-icon-only.icon-remove

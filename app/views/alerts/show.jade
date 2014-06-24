@@ -1,12 +1,43 @@
 extends ../shared/template
 
 block content
-  h1 Testing
-  h2= alert.task
-  h2= alert.dateTime
-  .alert(data-id= alert._id.toString())
-    span= alert._id.toString()
-  if(!alert.proximity)
-    form(action='/alerts/proximity', method = 'post')
-      input(type= 'hidden', name= 'alertId', value= alert._id.toString())
-      button Enable Proximity Alert
+  h1.taskTitleShow= alert.task
+  div.container.showContainer
+    div.row
+      div.col-lg-5.col-md-5.col-sm-8.col-xs-9.bhoechie-tab-container
+        div.col-lg-3.col-md-3.col-sm-3.col-xs-3.bhoechie-tab-menu
+          div.list-group
+            a.list-group-item.text-center(href='#')
+              h4.glyphicon.glyphicon-calendar
+              br
+              | Alert Time
+            a.list-group-item.text-center(href='#')
+              h4.glyphicon.glyphicon-screenshot
+              br
+              | Proximity
+            a.list-group-item.text-center(href='#')
+              h4.glyphicon.glyphicon-remove
+              br
+              | Delete
+        div.col-lg-9.col-md-9.col-sm-9.col-xs-9.bhoechie-tab
+          div.bhoechie-tab-content.active
+            center
+              h1.glyphicon.glyphicon-calendar(style='font-size:10em;color:#352719')
+              h3= alert.dateTime
+          div.bhoechie-tab-content
+            center
+              h1.glyphicon.glyphicon-bell.brownGlyphicon(style='font-size:12em;color:#352719')
+              if(!alert.proximity)
+                form(action = '/alerts/proximity', method = 'post')
+                  input(type= 'hidden', name= 'alertId', value= alert._id.toString())
+                  button Set Alert
+              if(alert.proximity)
+                p Proximity Alert Enabled
+          div.bhoechie-tab-content
+            center
+              h1.glyphicon.glyphicon-remove.brownGlyphicon(style='font-size:12em;color:#352719')
+              form(action = '/alerts/delete', method = 'post')
+                input(type= 'hidden', name= 'alertId', value= alert._id.toString())
+                button Delete Alert
+block scripts
+  script(src='/js/es6/compiled/alert.js')

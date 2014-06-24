@@ -1,4 +1,4 @@
-
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display);
 
 html{
   background-image: url('/img/deskbeacon.jpg');
@@ -11,8 +11,15 @@ html{
 
     .profile{
       .profileUserName{
+        font-family: 'Playfair Display', serif;
         width: 20%;
+        text-align: center;
         margin: 0 auto;
+        border: 1px solid #352719;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        background-color: rgba(255, 255, 255, 0.67);
+
       }
       .profileLeftSide{
         background-color: rgba(255, 254, 254, 0.6);
@@ -37,8 +44,379 @@ html{
       }
     }
 
+  }
+}
 
+.profileButtons{
+  width: 170px;
+  margin: 0 auto;
+}
 
+.moodLight{
+  border: 2px solid black;
+  border-radius: 10px;
+  position: relative;
+  h3{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  img{
+    height:70px;
+    margin-left: 10px;
+  }
+  .moodSelect{
+    margin-left: 5px;
+    select{
+      margin-left: 5px;
+    }
+  }
+  .text{
+    margin-top: 10px;
+    width: 50%;
+    top: 70px;
+    left: 100px;
+    position: absolute;
+    float: right;
+    p{
+      margin-bottom: 20px;
+    }
 
   }
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+  background-color: rgba(254, 254, 254, 0.74);
+}
+// .rightSide{
+//   width: 50%;
+//   float: right;
+// }
+
+.leftSide{
+  width: 50%;
+  float: left;
+}
+
+.newTaskContainer{
+  width: 50%;
+  height: 30%;
+  form{
+    .row{
+      text-align: center;
+      .addTaskButton{
+        text-align: center;
+        width: 85px;
+        margin: 0 auto;
+      }
+      .taskTitle{
+        input{
+          width: 60%;
+        }
+        label{
+          margin-right: 20px;
+        }
+      }
+      .taskDate{
+        input{
+          width: 60%;
+        }
+        label{
+          margin-right: 24px;
+        }
+      }
+      .taskColor{
+        label{
+          margin-right: 50px;
+        }
+      }
+      .taskBody{
+        .textArea{
+          #message{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.widget.stacked.widget-table.action-table{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.addTask{
+  margin-left: 10%;
+
+}
+
+.taskTitleShow{
+  width: 30%;
+  margin: 0 auto;
+  font-family: 'Playfair Display', serif;
+
+}
+//damned bootstrap is hijacking this one
+.showContainer{
+  margin: 0 auto !important;
+}
+
+.addTask {
+  margin-bottom: 10px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9) );
+	background:-moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
+	background-color:#f9f9f9;
+	-webkit-border-top-left-radius:15px;
+	-moz-border-radius-topleft:15px;
+	border-top-left-radius:15px;
+	-webkit-border-top-right-radius:15px;
+	-moz-border-radius-topright:15px;
+	border-top-right-radius:15px;
+	-webkit-border-bottom-right-radius:15px;
+	-moz-border-radius-bottomright:15px;
+	border-bottom-right-radius:15px;
+	-webkit-border-bottom-left-radius:15px;
+	-moz-border-radius-bottomleft:15px;
+	border-bottom-left-radius:15px;
+	text-indent:0;
+	border:1px solid rgba(102, 82, 65, 0.98);
+	display:inline-block;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:40px;
+	line-height:40px;
+	width:86px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.addTask:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
+	background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+	background-color:#e9e9e9;
+}.addTask:active {
+	position:relative;
+	top:1px;
+}
+
+//Bootstrappy stuff I didn't do:
+
+/*  bhoechie tab */
+div.bhoechie-tab-container{
+
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 0 !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  border:1px solid #ddd;
+  margin-top: 20px;
+  margin-left: 25%;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+}
+div.bhoechie-tab-menu{
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a .glyphicon,
+div.bhoechie-tab-menu div.list-group>a .fa {
+  color: #352719;
+}
+div.bhoechie-tab-menu div.list-group>a:first-child{
+  border-top-right-radius: 0;
+  -moz-border-top-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a:last-child{
+  border-bottom-right-radius: 0;
+  -moz-border-bottom-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a.active,
+div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
+div.bhoechie-tab-menu div.list-group>a.active .fa{
+  background-color: #352719;
+  background-image: #352719;
+  color: #ffffff;
+}
+div.bhoechie-tab-menu div.list-group>a.active:after{
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-left: 0;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-left: 10px solid #352719;
+}
+
+div.bhoechie-tab-content{
+  background-color: #ffffff;
+  // vertical-align: middle !important;
+  // text-align: center;
+  /* border: 1px solid #eeeeee; */
+  margin-top: 25%;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+  display: none;
+}
+
+// index page styling
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
+}
+
+.widget.widget-table .table {
+margin-bottom: 0;
+border: none;
+}
+
+.widget.widget-table .widget-content {
+padding: 0;
+}
+
+.widget .widget-header + .widget-content {
+border-top: none;
+-webkit-border-top-left-radius: 0;
+-webkit-border-top-right-radius: 0;
+-moz-border-radius-topleft: 0;
+-moz-border-radius-topright: 0;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+}
+
+.widget .widget-content {
+padding: 20px 15px 15px;
+background: #FFF;
+border: 1px solid #D5D5D5;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+.widget .widget-header {
+  h3{
+    font-family: 'Playfair Display', serif;
+    font-size: 20px !important;
+    margin-bottom: 3px !important;
+  }
+
+text-align: center;
+vertical-align: middle;
+position: relative;
+height: 40px;
+line-height: 40px;
+background: #352719;
+background: -moz-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafafa), color-stop(100%, #e9e9e9));
+background: -webkit-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+background: -o-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+background: -ms-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+background: linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+text-shadow: 0 1px 0 #fff;
+border-radius: 5px 5px 0 0;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1),inset 0 1px 0 white,inset 0 -1px 0 rgba(255,255,255,0.7);
+border-bottom: 1px solid #bababa;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9');
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')";
+border: 1px solid #D5D5D5;
+-webkit-border-top-left-radius: 4px;
+-webkit-border-top-right-radius: 4px;
+-moz-border-radius-topleft: 4px;
+-moz-border-radius-topright: 4px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+-webkit-background-clip: padding-box;
+}
+
+thead {
+
+display:table-header-group;
+//vertical-align: middle;
+border-color: inherit;
+}
+
+th, td{
+  text-align: center;
+}
+
+.widget .widget-header h3 {
+top: 2px;
+position: relative;
+left: 10px;
+display: inline-block;
+margin-right: 3em;
+font-size: 14px;
+font-weight: 600;
+color: #555;
+line-height: 0px;
+text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.widget .widget-header [class^="icon-"], .widget .widget-header [class*=" icon-"] {
+display: inline-block;
+margin-left: 13px;
+margin-right: -2px;
+font-size: 16px;
+color: #555;
+vertical-align: middle;
+}
+
+.showContainer{
+  position: relative;
+  vertical-align: middle;
+  // width: 402px;
+}
+.taskTitleShow{
+  border: 1px solid rgba(43, 36, 15, 0.95);
+  border-radius: 10px;
+  vertical-align: middle;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgba(251, 251, 251, 0.75);
+}
+.brownGlyphicon {
+  color:#352719 !important;
+}
+
+.profileButtons{
+  margin-bottom: 20px;
 }

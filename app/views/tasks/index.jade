@@ -1,4 +1,54 @@
 extends ../shared/template
 
 block content
-  h1 TASKY TASK INDEX
+  a.addTask(href='/tasks/new') Add Task
+  div.span7
+  div.widget.stacked.widget-table.action-table
+    div.widget-header
+      i.icon-th-list
+      h3 Tasks
+    div.widget-content
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            th Title
+            th Due
+            th Complete
+            th Alerts
+            th Delete Task
+        tbody
+          if(tasks)
+            each task in tasks
+              tr
+                td
+                  a(href= '/tasks/show/#{task._id.toString()}', style='background-color: #{task.color}')= task.title
+                td= task.due
+                td.td-actions
+                  if(task.isComplete)
+                    span.glyphicon.glyphicon-ok
+                  if(!task.isComplete)
+                    form(action= '/tasks/complete', method = 'post')
+                      input(type= 'hidden', name= 'taskId', value= task._id.toString())
+                      button Complete Task
+                td
+                  if(task.hasAlert)
+                    span.glyphicon.glyphicon-bell
+                  if(!task.hasAlert)
+                    form(action = '/alerts/setAlert', method = 'post')
+                      input(type= 'hidden', name= 'taskId', value= task._id.toString())
+                      button Set Alert
+                td
+                  form(action = '/tasks/delete', method = 'post')
+                    input(type= 'hidden', name= 'taskId', value= task._id.toString())
+                    button.glyphicon.glyphicon-remove
+
+            //- tr
+            //-   td Trident
+            //-   td
+            //-     | Internet
+            //-     | Explorer 5.0
+            //-   td.td-actions
+            //-     a.btn.btn-small.btn-primary(href='javascript:;')
+            //-       i.btn-icon-only.icon-ok
+            //-     a.btn.btn-small(href='javascript:;')
+            //-       i.btn-icon-only.icon-remove

@@ -24,12 +24,18 @@ board.on('ready', function() {
     if(alerts[0]){
         var say = 'say "King of the Galactic Empire, you have'+alerts+'"';
         exec(say);
+        alerts = [];
     }
   });
 
   motion.on('motionend', function(err, ts) {
     console.log('motionend', ts);
   });
+
+  led= new five.Led({
+    pin: 4
+  });
+  led.on();
 
 
 });
@@ -38,13 +44,16 @@ function setMood(userMood){
   mood = userMood;
   if(mood){
     console.log(mood);
-
+    if(led){
+      led.off();
+    }
     switch(mood){
     case 'bad':
       led= new five.Led({
         pin: 5
       });
         led.on();
+        mood= '';
       break;
 
     case 'busy':
@@ -52,6 +61,7 @@ function setMood(userMood){
         pin: 6
       });
       led.on();
+      mood= '';
       break;
 
     case 'good':
@@ -59,6 +69,7 @@ function setMood(userMood){
         pin: 7
       });
       led.on();
+      mood= '';
     }
 
   }else{

@@ -77,7 +77,8 @@ class Alert{
       _.forEach(alerts, alert=>{
         timeOuts[alert.id] = setTimeout(function(){
           var child;
-          var task = `say ${alert.task}`;
+          var task = alert.task.replace(/([!?'`~@#$%^&*`])/g,'');
+          task = `say ${task}`;
           child = exec(task,
           function(err, stdout, stderr){
             console.log('stdout:'+stdout);
@@ -99,7 +100,7 @@ class Alert{
   destroy(fn){
     alertsCollection.findAndRemove({_id: this._id}, (err, alert)=>{
       fn();
-    });  
+    });
   }// end destroy
 
   save(func){
